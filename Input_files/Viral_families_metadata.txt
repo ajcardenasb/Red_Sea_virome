@@ -1,0 +1,20 @@
+Family	Host	Type	Presumed
+Baculoviridae	Invertebrates	dsDNA	Invertebrates
+Caulimoviridae	Plants	dsDNA	Unicellular eukaryotes
+Flaviviridae	Invertebrates	ssRNA	Invertebrates
+Hepadnaviridae	Mammals/Birds	dsDNA	Vertebrates
+Herpesviridae	Mammals	dsDNA	Vertebrates
+Iridoviridae	Invertebrates	dsDNA	Invertebrates
+Marseilleviridae	Unicellular eukaryotes	dsDNA	Unicellular eukaryotes
+Mimiviridae	Unicellular eukaryotes	dsDNA	Unicellular eukaryotes
+Myoviridae	Bacteriophage	dsDNA	Bacteriophage
+Parvoviridae	Invertebrates/Vertebrates	ssDNA	Invertebrates
+Phycodnaviridae	Green algae	dsDNA	Unicellular eukaryotes
+Picobirnaviridae	Bacteriophage/mammals	dsRNA	Bacteriophage
+Picornaviridae	Vertebrates	ssRNA	Vertebrates
+Pithoviridae	Unicellular eukaryotes	dsDNA	Unicellular eukaryotes
+Podoviridae	Bacteriophage	dsDNA	Bacteriophage
+Polydnaviridae	Invertebrates	dsDNA	Invertebrates
+Poxviridae	Invertebrates/Vertebrates	dsDNA	Invertebrates
+Retroviridae	Vertebrates	ssRNA	Vertebrates
+Siphoviridae	Bacteriophage	dsDNA	Bacteriophage
