@@ -47,8 +47,8 @@ mt.l=subset(all.l1, sample == "Metatranscriptome")
 mt.l$Host=factor(mt.l$Host, levels = c("POC", "ACR", "STY", "GAL", "PAC", "POR", "DIP", "MYC"))
 
 
-mg.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mg.l, stat="identity", position = "fill") +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="none") + coord_flip()
-mt.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mt.l, stat="identity", position = "fill") +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "Percentage of sequences", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="none") + coord_flip()
+mg.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mg.l, stat="identity", position = "fill", width=1) +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="none") + coord_flip()
+mt.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mt.l, stat="identity", position = "fill", width=1) +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "Percentage of sequences", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="none") + coord_flip()
 
 
 ####clustering
@@ -75,24 +75,47 @@ mt.dendo=ggdendrogram(rna.hclu,  rotate = FALSE) + coord_flip() + scale_y_revers
 COLdna=c("#CCEBC5", "#FFFFB3", "#BEBADA", "#FB8072", "#9fb9bf", "#8DD3C7" ,"#B3DE69", "#80B1D3", "#D9D9D9", "#b88c8c", "#FDB462", "#BC80BD", "#FCCDE5") 
 COLrna=c( "#8DD3C7", "#FFED6F", "#9fb9bf", "#80B1D3", "#B3DE69", "#FB8072", "#BC80BD", "#FCCDE5") 
 
-#clr.dna.veg=as.data.frame(NormalizeData((dna), normalization.method = "CLR"))
-#clr.dna.veg.t=as.data.frame(t(clr.dna.veg))
 dna.t=t(dna)
 dna.alpha=specpool(dna.t[,1:117], rownames(dna.t))
 dna.alpha$host=gsub("[0-9]", "", rownames(dna.t))
 dna.alpha$host=gsub("MG_", "", dna.alpha$host)
 dna.alpha$host=factor(dna.alpha$host,  levels = c("PAV", "PLE", "FUN", "POR", "STY", "POC", "PAC","GAL", "MIL",  "XEN", "ACA", "DIP", "MYC"))
-mg.alpha=ggplot(dna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("") + scale_fill_manual(values=COLdna) + coord_flip()  + ylim(1, 60) 
-#clr.rna.veg=as.data.frame(NormalizeData((rna), normalization.method = "CLR"))
-#clr.rna.veg.t=as.data.frame(t(clr.rna.veg))
+#mg.alpha=ggplot(dna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("") + scale_fill_manual(values=COLdna) + coord_flip()  + ylim(1, 60) 
+mg.alpha.bw=ggplot(dna.alpha,aes(x=host, y=chao)) +  geom_boxplot(fill="gray", width=1) + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("")  + coord_flip()  + ylim(1, 60) 
+
 rna.t=t(rna)
 rna.alpha=specpool(rna.t[,1:117], rownames(rna.t))
 rna.alpha$host=gsub("[0-9]", "", rownames(rna.t))
 rna.alpha$host=gsub("MT_", "", rna.alpha$host)
 rna.alpha$host=factor(rna.alpha$host, levels = c("POC", "ACR", "STY", "GAL", "PAC", "POR", "DIP", "MYC"))
-mt.alpha=ggplot(rna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("") + scale_fill_manual(values=COLrna) + coord_flip() 
+#mt.alpha=ggplot(rna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("") + scale_fill_manual(values=COLrna) + coord_flip() 
+mt.alpha.bw=ggplot(rna.alpha,aes(x=host, y=chao)) +  geom_boxplot(fill="gray", width=1) + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="none") + ggtitle("")  + coord_flip()  + ylim(1, 60) 
+#grid.all=grid.arrange( mg.alpha,  mt.alpha)
 
-grid.all=grid.arrange( mg.alpha,  mt.alpha)
+#grid.all=grid.arrange( mg.alpha.bw,  mt.alpha.bw)
+
+
+### final plot
+
+pdf("./outputs/RedSeaVirome_dend-barpl-alpha.pdf",  width = 10, height = 10, pointsize = 12) 
+grid.all=grid.arrange(mg.dendo, mg.bar, mg.alpha.bw, mt.dendo, mt.bar, mt.alpha.bw,  ncol=3, nrow =3)
+dev.off()
+
+
+###leyend
+
+names.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mt.l, stat="identity", position = "fill") +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "Percentage of sequences", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="bottom") + coord_flip()
+leg.bar=get_legend(names.bar)
+
+names.box=ggplot(dna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="bottom") + ggtitle("") + scale_fill_manual(values=COLdna) + coord_flip()  
+leg.box=get_legend(names.box)
+
+pdf("./outputs/RedSeaVirome_dend-barpl-alpha.pdf",  width = 20, height = 10, pointsize = 12) 
+grid.all=grid.arrange(as_ggplot(leg.bar),as_ggplot(leg.box), ncol=2, nrow =1)
+dev.off()
+grid.all=grid.arrange( as_ggplot(leg.bar), ncol=1, nrow =1)
+
+
 
 ###comparison between MG and MT 
 all.t=t(all)
@@ -105,18 +128,6 @@ t.test(subset(all.alpha, rownames(all.alpha) %like% "POC")$chao ~ subset(all.alp
 t.test(subset(all.alpha, rownames(all.alpha) %like% "POR")$chao ~ subset(all.alpha, rownames(all.alpha) %like% "POR")$groups)
 t.test(subset(all.alpha, rownames(all.alpha) %like% "STY")$chao ~ subset(all.alpha, rownames(all.alpha) %like% "STY")$groups)
 
-###leyend
-
-names.bar=ggplot() +geom_bar(aes(y = Abundance, x = Host, fill = Family), data = mt.l, stat="identity", position = "fill") +  scale_y_continuous(labels = percent_format(), expand = c(0, 0))  + labs( y= "Percentage of sequences", x="") + scale_fill_manual(values=P21)  + theme_bw()  + theme(axis.text.x=element_text(angle=90,hjust=1), plot.title = element_text(hjust = 0.5), strip.background =element_rect(fill="white"), text = element_text(size=12),  legend.position="bottom") + coord_flip()
-leg.bar=get_legend(names.bar)
-
-names.box=ggplot(dna.alpha,aes(x=host, y=chao, fill=host)) +  geom_boxplot() + geom_jitter(width=0.25, alpha=0.5) + labs( y= "", x="" ) + theme(legend.title = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1), panel.grid.major = element_line(colour = "transparent"), panel.grid.minor = element_line(colour = "transparent"), panel.background = element_blank(), axis.line = element_line(colour = "black"),  legend.position="bottom") + ggtitle("") + scale_fill_manual(values=COLdna) + coord_flip()  
-leg.box=get_legend(names.box)
-
-pdf("./outputs/RedSeaVirome_dend-barpl-alpha.pdf",  width = 20, height = 10, pointsize = 12) 
-grid.all=grid.arrange(mg.dendo, mg.bar, mg.alpha, mt.dendo, mt.bar, mt.alpha, as_ggplot(leg.bar),as_ggplot(leg.box), ncol=3, nrow =3)
-dev.off()
-grid.all=grid.arrange( as_ggplot(leg.bar), ncol=1, nrow =1)
 
 
 ### viral types
