@@ -9,7 +9,7 @@ library(gridExtra)
 library(ggpubr)
 
 
-setwd("~/Documents/GitHub/Red_Sea_virome/")
+#setwd("~/Documents/GitHub/Red_Sea_virome/")
 
 #data in
 dna=read.table("./Input_files/MG_filtered_counts", header = TRUE, row.names = 1)

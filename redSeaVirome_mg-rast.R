@@ -7,10 +7,10 @@ library(scales)
 ## new
 ############
 
-setwd("~/Documents/GitHub/Red_Sea_virome/")
+#setwd("~/Documents/GitHub/Red_Sea_virome/")
 
-seed=read.csv("~/Documents/Projects/Jin/manuscript_2020/viral_contigs/Seed_annotations/Subsystems_hierarchy.csv")
-my_ann=read.table("my_annotations", fill = TRUE, sep = "\t", header = TRUE)
+seed=read.csv("~/Input_files/Subsystems_hierarchy.csv")
+my_ann=read.table("~/Input_files/my_annotations", fill = TRUE, sep = "\t", header = TRUE)
 temp1=colsplit(my_ann$semicolon.separated.list.of.annotations,',',c('SSaccession.number', 'function'))
 temp1$SSaccession.number=gsub("accession=|\\[|\\]","", temp1$SSaccession.number)
 temp2=colsplit(my_ann$sequence.id,'_',c('Sample', 'Host', 'Header'))

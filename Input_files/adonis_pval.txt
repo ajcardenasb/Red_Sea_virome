@@ -1,3 +1,0 @@
-	Species	Family	Minor_Clade	Growth_form_typical	Life_history_strategy	Wave_exposure_preference	Sexual_system	Mode_of_larval_development	Major_Clade	Order	Substrate
-Metagenomes	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.006	0.004
-Metatranscriptomes	0.001	0.001	0.001	0.001	0.001	0.002	0.001	0.014	NA	0.035	NA

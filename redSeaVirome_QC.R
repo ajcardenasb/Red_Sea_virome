@@ -1,6 +1,6 @@
 library(data.table)
 
-setwd("~/Documents/GitHub/Red_Sea_virome/")
+#setwd("~/Documents/GitHub/Red_Sea_virome/")
 
 dna=read.table("./Input_files/DNA_counts", header = TRUE, row.names = 1)
 rna=read.table("./Input_files/RNA_counts", header = TRUE, row.names = 1)

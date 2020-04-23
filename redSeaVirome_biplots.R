@@ -1,4 +1,4 @@
-setwd("~/Documents/GitHub/Red_Sea_virome/")
+#setwd("~/Documents/Bioinformatics_scripts/R_scripts/Red_Sea_viromes/")
 
 
 dna=read.table("./Input_files/MG_log10_counts", header = TRUE, row.names = 1)
@@ -28,9 +28,12 @@ rna.pca2=rda(rna.met[,2:11],  distance = "bray")
 dna.sp=c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c")
 rna.sp=c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c")
 life=c("#A54657", "#C8963E", "#058ED9", "#4CB275", "#476A6F")
+growth=c("#BC8DA7", "#92B79A", "#76B8CC", "#B2B2B7", "#897952", "#F6E27F")
 
-pdf("./outputs/RedSeaVirome_biplots.pdf",  width = 10, height = 10, pointsize = 10) 
-par(mfrow=c(2,2)) 
+
+pdf("./outputs/RedSeaVirome_biplots2.pdf",  width = 12, height = 10, pointsize = 10) 
+par(mfrow=c(2,3)) 
+
 biplot(dna.pca2, display = c('species', "sites"), type = c("text","points"), main="Host species", scaling = "species")
 ordihull(dna.pca2, group = dna.met$Species,  draw = "polygon" , col = dna.sp)#,  label = TRUE to see groups
 spp.names <- levels(dna.met$Species)
@@ -41,11 +44,10 @@ ordihull(dna.pca2, group = dna.met$Life_history_strategy,  draw = "polygon" , co
 life.names <- levels(dna.met$Life_history_strategy)
 legend("bottomleft",   legend = life.names, fill = life, cex=0.5 )
 
-# biplot(dna.pca2, display = c('species', "sites"), type = c("text","points"), main="Growth form")
-# ordihull(dna.pca2, group = dna.met$Growth_form_typical,  draw = "polygon" , col = c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c"))
-# growth.names <- levels(dna.met$Growth_form_typical)
-# legend("bottomleft",   legend = growth.names, fill = c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c"), cex=0.5 )
-
+biplot(dna.pca2, display = c('species', "sites"), type = c("text","points"), main="Growth form", scaling = "species")
+ordihull(dna.pca2, group = dna.met$Growth_form_typical,  draw = "polygon" , col = growth)
+life.names <- levels(dna.met$Growth_form_typical)
+legend("bottomleft",   legend = life.names, fill = growth, cex=0.5 )
 
 biplot(rna.pca2, display = c('species', "sites"), type = c("text","points"), main="Host species", scaling = "species")
 ordihull(rna.pca2, group = rna.met$Species,  draw = "polygon" , col = rna.sp) # ,  label = TRUE to see groups
@@ -54,12 +56,11 @@ legend("bottomleft",   legend = spp.names, fill = rna.sp, cex=0.5 )
 biplot(rna.pca2, display = c('species', "sites"), type = c("text","points"), main="Life history strategies", scaling = "species")
 ordihull(rna.pca2, group = rna.met$Life_history_strategy,  draw = "polygon" , col =life)
 legend("bottomleft",   legend = life.names, fill = life, cex=0.5 )
-# 
-# biplot(rna.pca2, display = c('species', "sites"), type = c("text","points"), main="Growth form")
-# ordihull(rna.pca2, group = rna.met$Growth_form_typical,  draw = "polygon" , col = c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c"))
-# legend("bottomleft",   legend = growth.names, fill = c("#8DD3C7", "#518C4B", "#9fb9bf","#FB8072","#80B1D3","#FDB462","#B3DE69", "#CCEBC5","#D9D9D9","#BC80BD","#FCCDE5","#BEBADA","#b88c8c"), cex=0.5 )
+
+biplot(rna.pca2, display = c('species', "sites"), type = c("text","points"), main="Growth form", scaling = "species")
+ordihull(rna.pca2, group = rna.met$Growth_form_typical,  draw = "polygon" , col = growth)
+life.names <- levels(rna.met$Growth_form_typical)
+legend("bottomleft",   legend = life.names, fill = growth, cex=0.5 )
 
 dev.off()
-
-
 

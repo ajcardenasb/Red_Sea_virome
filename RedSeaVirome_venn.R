@@ -3,7 +3,7 @@ library(gridExtra)
 library(data.table)
 library(reshape2)
 
-setwd("~/Documents/GitHub/Red_Sea_virome")
+#setwd("~/Documents/GitHub/Red_Sea_virome")
 
 
 ### venn
