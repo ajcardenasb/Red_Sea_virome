@@ -10,7 +10,7 @@ Viruses are the most abundant biological entities in marine ecosystems and their
 1. QC and Trimming were done using the script `RedSeaViromes_QCs.sh`
 2. Overall taxonomic profiles were obtained using [CCMetagen](https://github.com/vrmarcelino/CCMetagen), as described in `RedSeaViromes_Taxonomic_profiles.sh`
 3. Host (Cnidarian) reads and rRNA were removed usign the script `RedSeaViromes_QCs.sh`
-4. KAIJU was run using the script `RedSeaViromes_Taxonomic_profiles.sh`
+4. [KAIJU](https://github.com/bioinformatics-centre/kaiju) was run using the script `RedSeaViromes_Taxonomic_profiles.sh`
 5. Host relative abundances were analyzed using the scrip `RedSeaVirome_host_abundances.R`
 6. Viral abundace tables were obtained usign the script `redSeaVirome_QC.R`
 7. Viral diversity analysis and plots were done using the scripts `RedSeaVirome_barplots.R`, `redSeaVirome_biplots.R` and `RedSeaVirome_Ordination_permanovas.R`
