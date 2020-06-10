@@ -8,7 +8,7 @@ Viruses are the most abundant biological entities in marine ecosystems and their
 ##Workflow
 
 1. QC and Trimming were done using the script `` 
-2. Overall taxonomic profiles were obtained using [link](https://github.com/vrmarcelino/CCMetagen)
+2. Overall taxonomic profiles were obtained using [CCMetagen](https://github.com/vrmarcelino/CCMetagen)
 3. Host (Cnidarian) reads and rRNA were removed usign the script ``
 4. KAIJU was run using the script ``
 5. Host relative abundances were analyzed using the scrip `RedSeaVirome_host_abundances.R`
