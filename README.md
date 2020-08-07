@@ -14,6 +14,7 @@ Viruses are the most abundant biological entities in marine ecosystems and their
 5. Host relative abundances were analyzed using the scrip `RedSeaVirome_host_abundances.R`
 6. Viral abundace tables were obtained usign the script `redSeaVirome_QC.R`
 7. Viral diversity analysis and plots were done using the scripts `RedSeaVirome_barplots.R`, `redSeaVirome_biplots.R` and `RedSeaVirome_Ordination_permanovas.R`
-8. Reads annotated to viruses were retrieve from KAIJU output using the script `RedSeaVirome_kaiju2viral_reads.R`
-9. MG-RAST annotations were processed using the script `redSeaVirome_mg-rast.R`
-10. UniProt annotations were processed using the script `RedSeaVirome_Uniprot_annotations.R`
+8. Spearman correlations were done using the script `RedSeaVirome_sparcc.R`
+9. Reads annotated to viruses were retrieve from KAIJU output using the script `RedSeaVirome_kaiju2viral_reads.R`
+10. MG-RAST annotations were processed using the script `redSeaVirome_mg-rast.R`
+11. UniProt annotations were processed using the script `RedSeaVirome_Uniprot_annotations.R`
