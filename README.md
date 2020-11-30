@@ -20,4 +20,4 @@ Sequence data determined in this study are accessible at NCBI under BioProject I
 8. Spearman correlations were done using the script `RedSeaVirome_sparcc.R`
 9. Reads annotated to viruses were retrieve from KAIJU output using the script `RedSeaVirome_kaiju2viral_reads.R`
 10. MG-RAST annotations were processed using the script `redSeaVirome_mg-rast.R`
-11. UniProt annotations were processed using the script `RedSeaVirome_Uniprot_annotations.R`
+11. UniProt annotations were processed using the scripts `Uniprot_annotations.sh` and `RedSeaVirome_Uniprot_annotations.R`
