@@ -1,4 +1,4 @@
-sprot
+#sprot
 sprot_metadata=read.table("sprot_accession_complementary_information", sep = "\t",  quote = "", header = T)
 sprot_annotations=read.table("sprot_annotations", sep = "\t",  quote = "", header = F)
 sprot_annotations_f=sprot_annotations[,c(1,2,3,12,13)]
